@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class convert
 {
-	char[] dig={'0','1','2','3','4','5','6','7'};
+	char[] dig={'0','1','2','3','4','5'};
    public convert()
    {   
 	   String str="";
