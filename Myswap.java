@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Myswap implements intrfc {
 	
 	Scanner n=new Scanner(System.in);	
-	public void swap()
+	public void swp()
 	{
 		int	a=n.nextInt();
 		System.out.println(a);
@@ -30,7 +30,7 @@ public class Myswap implements intrfc {
 public static void main (String args[])
 {
 	Myswap sw=new Myswap();
-	sw.swap();
+	sw.swp();
 	sw.swap2();
 }
 }

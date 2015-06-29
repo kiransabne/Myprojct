@@ -20,6 +20,6 @@ public class convert
    }
 	public static void main(String args[])
 	{
-		convert con=new convert();
+		convert on=new convert();
 }
 }

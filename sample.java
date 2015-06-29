@@ -17,12 +17,12 @@ class sam extends sample
 {
 	public void calculat()
 	{
-	if(d>e){
+	if(d<e){
 	System.out.println("b is big number");
 	}
 	else
 	{
-		System.out.println("a is big number");
+		System.out.println("a is smll number");
 	}}
 	
 public  void main(String args[])
