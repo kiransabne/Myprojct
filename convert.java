@@ -20,6 +20,8 @@ public class convert
    }
 	public static void main(String args[])
 	{
-		convert on=new convert();
+  System.out.println("Main");
+		convert on=new convert(); 
+
 }
 }
