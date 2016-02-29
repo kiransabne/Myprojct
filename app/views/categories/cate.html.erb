@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Categories</h2>
+  <table>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <ul >
+        <li class = "list">
+          <%=category.name %>
+        </li>
+        <li>
+          <%= link_to image_tag(category.image_url),  sub_index_subcategories_path(:category =>category.id) %>
+        </li>
+      </ul>    
+      <% end %>
+  </tbody>
+</table>
