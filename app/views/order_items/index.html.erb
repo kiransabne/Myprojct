@@ -12,10 +12,8 @@
         <th colspan="1"></th>
       </tr>
     </thead>
-      <div class= "Gtotal" >
-      <label> Grand Total: </label>
-         $<span class ="grand_total">
-         <%=  current_cart.grand_total %></span>
+        <div>
+         Grand Total:<span class="grand_total"><%=  current_cart.grand_total %></span>
       </div> 
     <tbody> 
       <% @order_items.each do |order_item|%>

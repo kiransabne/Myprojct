@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -21,19 +22,19 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc', '~> 0.4.0', :group => :doc
 gem 'yaml_db'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'ransack'
 gem 'devise'
 gem 'carrierwave'
-gem 'rmagick'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 # Use Unicorn as the app server
 # gem 'unicorn'
-gem 'cancancan', '~> 1.10'
+gem 'cancancan'
+# gem 'rmagick', '~> 2.16.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

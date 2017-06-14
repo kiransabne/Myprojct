@@ -3,8 +3,6 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :access_control, except: [:indexx, :show]
 
-  # GET /products
-  # GET /products.json
   def index
     @q=Product.ransack(params[:q])
     @products=@q.result
@@ -14,31 +12,25 @@ class ProductsController < ApplicationController
     @subcategory = Subcategory.find(params[:sub])
    
     @products= @subcategory.products
-     puts 11111111111111111
     puts @products.inspect
-      end
-  # GET /products/1
-  # GET /products/1.json
+  end
+  
   def show
     
   end
 
-  # GET /products/new
   def new
     @product = Product.new
     @subcategory=Subcategory.all
     @categories=Category.all
-    
   end
 
-  # GET /products/1/edit
   def edit
      @subcategories=Subcategory.all
     @categories=Category.all
   end
 
-  # POST /products
-  # POST /products.json
+
   def create
     @subcategory=Subcategory.find(params[:subcategory_id])
     @product = @subcategory.products.build(product_params)
@@ -54,8 +46,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /products/1
-  # PATCH/PUT /products/1.json
   def update
     respond_to do |format|
       if @product.update(product_params)
@@ -74,8 +64,6 @@ class ProductsController < ApplicationController
     render :partial => "subcategories", :object => @subcategories 
   end  
   
-  # DELETE /products/1
-  # DELETE /products/1.json
   def destroy
     @product.destroy
     respond_to do |format|
@@ -85,12 +73,10 @@ class ProductsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :price, :image, :subcategory_id)
     end

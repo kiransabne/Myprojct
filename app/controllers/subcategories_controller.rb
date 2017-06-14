@@ -3,9 +3,6 @@ class SubcategoriesController < ApplicationController
   before_action :authenticate_user!
   before_action :access_control, except: [:sub_index]
 
-
-  # GET /subcategories
-  # GET /subcategories.json
   def index
     @subcategories = Subcategory.all
     @categories=Category.all
@@ -15,23 +12,12 @@ class SubcategoriesController < ApplicationController
     @category=Category.find(params[:category])
     @subcategories = @category.subcategories
   end  
-  # GET /subcategories/1
-  # GET /subcategories/1.json
-  def show
-  end
-
-  # GET /subcategories/new
+  
   def new
     @subcategory = Subcategory.new
-        @categories=Category.all
+    @categories=Category.all
   end
 
-  # GET /subcategories/1/edit
-  def edit
-  end
-
-  # POST /subcategories
-  # POST /subcategories.json
   def create
     @subcategory = Subcategory.new(subcategory_params)
 
@@ -46,8 +32,6 @@ class SubcategoriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /subcategories/1
-  # PATCH/PUT /subcategories/1.json
   def update
     respond_to do |format|
       if @subcategory.update(subcategory_params)
@@ -60,8 +44,6 @@ class SubcategoriesController < ApplicationController
     end
   end
 
-  # DELETE /subcategories/1
-  # DELETE /subcategories/1.json
   def destroy
     @subcategory.destroy
     respond_to do |format|
@@ -71,13 +53,11 @@ class SubcategoriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_subcategory
-      @subcategory = Subcategory.find(params[:id])
-    end
+  def set_subcategory
+    @subcategory = Subcategory.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def subcategory_params
-      params.require(:subcategory).permit(:name, :image, :category_id, :product_id)
-    end
+  def subcategory_params
+    params.require(:subcategory).permit(:name, :image, :category_id, :product_id)
+  end
 end
