@@ -1,13 +1,8 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :access_control, except: [:cate]
 
   def index
-    @categories = Category.all
-    @user=User.all
-  end
-   def cate
     @categories = Category.all
   end
   
@@ -16,8 +11,6 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
-    @user=User.all
-    authorize! :read, @category
   end
 
   def edit
@@ -29,7 +22,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @category }
+        format.json { render :index, status: :created, location: @category }
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }

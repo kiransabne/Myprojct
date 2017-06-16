@@ -1,30 +1,24 @@
 class SubcategoriesController < ApplicationController
   before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :access_control, except: [:sub_index]
-
+  before_action :find_category
+  
   def index
-    @subcategories = Subcategory.all
-    @categories=Category.all
-  end
-
-  def sub_index
-    @category=Category.find(params[:category])
     @subcategories = @category.subcategories
-  end  
+  end
   
   def new
-    @subcategory = Subcategory.new
+    @subcategory = @category.subcategories.build
     @categories=Category.all
   end
 
   def create
-    @subcategory = Subcategory.new(subcategory_params)
+    @subcategory = @category.subcategories.build(subcategory_params)
 
     respond_to do |format|
       if @subcategory.save
-        format.html { redirect_to @subcategory, notice: 'Subcategory was successfully created.' }
-        format.json { render :show, status: :created, location: @subcategory }
+        format.html { redirect_to category_subcategories_path(@category), notice: 'Subcategory was successfully created.' }
+        format.json { render :index, status: :created, location: @subcategory }
       else
         format.html { render :new }
         format.json { render json: @subcategory.errors, status: :unprocessable_entity }
@@ -47,7 +41,7 @@ class SubcategoriesController < ApplicationController
   def destroy
     @subcategory.destroy
     respond_to do |format|
-      format.html { redirect_to subcategories_url, notice: 'Subcategory was successfully destroyed.' }
+      format.html { redirect_to category_subcategories_url(@category), notice: 'Subcategory was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -59,5 +53,9 @@ class SubcategoriesController < ApplicationController
 
   def subcategory_params
     params.require(:subcategory).permit(:name, :image, :category_id, :product_id)
+  end
+
+  def find_category
+    @category = Category.find(params[:category_id])
   end
 end

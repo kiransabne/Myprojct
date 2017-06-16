@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Products</h1>
-  <%= render "search" %>
   <table>
    <thead>
     <tr>
@@ -16,15 +15,14 @@
       <tr>
         <td><%= pro.name %></td>
         <td><%= pro.price %></td>
-        <td><%= image_tag(pro.image_url)%></td>
-        <td><%= link_to 'Show', pro %></td>
-        <td><%= link_to 'Edit', edit_product_path(pro) %></td>
-        <td><%= link_to 'Destroy', pro, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= link_to image_tag(pro.image_url), subcategory_product_path(@subcategory, pro) %></td>
+        <td><%= link_to 'Edit', edit_subcategory_product_path(@subcategory,pro) %></td>
+        <td><%= link_to 'Destroy',subcategory_product_path(@subcategory, pro), method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br> 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to 'New Product', new_subcategory_product_path(@subcategory) %>
+<br>
+<td><%= link_to ' Go to Subcategory', category_subcategories_path(category_id: @subcategory.category.id) %></td>

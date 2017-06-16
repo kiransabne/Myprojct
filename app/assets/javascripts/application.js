@@ -13,27 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
-//  $(document).ready(function() {
-//  	$('#product_category_id').change(function(){
-//  	var category= this.value;
-//               console.log("fdsfd")
-//     $.ajax({
-//     	type: 'GET',
-//     	data: {category: category},
-//     	url: 'find_subcategory',
-//     	success: function(data) {
-//     	console.log("fdsfd")   
-// 			console.log(data);
-// 			$('#sub_cat').html(data);
-// 			}
-// 		});
-//  });
 
-// });
 $(document).ready(function() {
-
  $('#product_category_id').change(function() {
  		var category_id= this.value;
     

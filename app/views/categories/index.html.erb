@@ -14,7 +14,7 @@
     <% @categories.each do |category| %>
       <tr>
         <td><%= category.name %></td>
-        <td><%= image_tag(category.image_url)%></td>
+        <td><%= link_to image_tag(category.image_url), category_subcategories_path(category_id: category.id) %>
         <td><%= link_to 'Show', category %></td>
         <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New Categorydd', new_category_path %>
+<%= link_to 'New Category', new_category_path %>

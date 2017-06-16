@@ -14,15 +14,15 @@
     <% @subcategories.each do |subcategory| %>
       <tr>
         <td><%= subcategory.name %></td>
-        <td><%= image_tag(subcategory.image_url) %></td>
+        <td><%= link_to image_tag(subcategory.image_url), subcategory_products_path(:subcategory_id => subcategory.id) %>
         <td><%= link_to 'Show', subcategory %></td>
-        <td><%= link_to 'Edit', edit_subcategory_path(subcategory) %></td>
-        <td><%= link_to 'Destroy', subcategory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_category_subcategory_path(@category,subcategory) %></td>
+        <td><%= link_to 'Destroy', category_subcategory_path(@category, subcategory), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Subcategory', new_subcategory_path %>
+<b><%= link_to 'Go to Category', categories_path%></b><br>
+<br><%= link_to 'New Subcategory', new_category_subcategory_path(@category) %>

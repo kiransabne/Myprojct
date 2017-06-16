@@ -20,16 +20,15 @@
         <td><%= order_item.product.price%></td>
         <td>
         <%= form_for (order_item) do |f| %>
-                <div class="field">
-                    <%= f.number_field :quantity, :value => order_item.quantity, default: "1" %>
-                </div>
-         <% end %>        
+          <div class="field">
+            <%= f.number_field :quantity, :value => order_item.quantity, default: "1" %>
+          </div>
+        <% end %>        
         <td><%= order_item.product.price%></td>
       </tr>
     <% end %>   
   </tbody>
 </table>
-
 
 <br>
 
